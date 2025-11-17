@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeSense AI - AI-Powered Code Analysis</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <span class="logo-text">CodeSense AI</span>
+                </div>
+                
+                <nav class="nav">
+                    <button class="nav-btn">Features</button>
+                    <button class="nav-btn">Documentation</button>
+                    <button class="nav-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </button>
+                    <button class="nav-btn primary">
+                        <i class="fas fa-star"></i> Star
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">🚀 AI-Powered Code Analysis</div>
+                
+                <h1 class="hero-title">CodeSense AI</h1>
+                
+                <p class="hero-description">
+                    Analyze, optimize, and improve your code with advanced AI. 
+                    Get instant feedback, error detection, and optimization suggestions 
+                    for multiple programming languages.
+                </p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('code-editor').scrollIntoView({behavior: 'smooth'})">
+                        Start Analyzing Code
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline">View Documentation</button>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Multi-Language Support</h3>
+                        <p>Support for JavaScript, Python, Java, C++, and more programming languages.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon accent">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Real-time Analysis</h3>
+                        <p>Get instant feedback on code quality, errors, and optimization opportunities.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Security Focused</h3>
+                        <p>Identify security vulnerabilities and best practices for secure coding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Editor Section -->
+    <section id="code-editor" class="editor-section">
+        <div class="container">
+            <div class="editor-grid">
+                <!-- Editor Panel -->
+                <div class="editor-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Code Editor</h2>
+                            <div class="editor-controls">
+                                <select id="language-select" class="select">
+                                    <option value="">Select language</option>
+                                    <option value="javascript">JavaScript</option>
+                                    <option value="python">Python</option>
+                                    <option value="java">Java</option>
+                                    <option value="cpp">C++</option>
+                                    <option value="csharp">C#</option>
+                                    <option value="typescript">TypeScript</option>
+                                    <option value="go">Go</option>
+                                    <option value="rust">Rust</option>
+                                </select>
+                                <button id="analyze-btn" class="btn btn-primary" disabled>
+                                    <i class="fas fa-play"></i>
+                                    <span>Analyze Code</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="editor-wrapper">
+                            <div class="line-numbers" id="line-numbers"></div>
+                            <textarea 
+                                id="code-input" 
+                                class="code-textarea"
+                                placeholder="Paste your code here..."
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Panel -->
+                <div class="analysis-panel">
+                    <!-- Code Output -->
+                    <div class="card">
+                        <h3 class="card-title">
+                            <i class="fas fa-play text-success"></i>
+                            Code Output
+                        </h3>
+                        <div id="output-content" class="output-content">
+                            <p class="placeholder">Output will appear here after code analysis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Errors & Warnings -->
+                    <div class="card">
+                        <h3 class="card-title">
+                            <i class="fas fa-exclamation-circle text-danger"></i>
+                            Issues Found
+                            <span id="error-count" class="badge badge-danger" style="display: none;">0</span>
+                        </h3>
+                        <div id="errors-content" class="errors-content">
+                            <p class="placeholder">No issues found yet. Analyze your code to see results.</p>
+                        </div>
+                    </div>
+
+                    <!-- Suggestions -->
+                    <div class="card">
+                        <h3 class="card-title">
+                            <i class="fas fa-lightbulb text-warning"></i>
+                            Suggestions
+                        </h3>
+                        <div id="suggestions-content" class="suggestions-content">
+                            <p class="placeholder">Suggestions will appear here after analysis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Optimizations -->
+                    <div class="card">
+                        <h3 class="card-title">
+                            <i class="fas fa-check-circle text-success"></i>
+                            Optimizations
+                        </h3>
+                        <div id="optimizations-content" class="optimizations-content">
+                            <p class="placeholder">Optimization tips will appear here after analysis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
+
